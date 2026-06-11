@@ -1,6 +1,5 @@
-# --------------------------------------------------------
 # 1. CodeBuild Service Role
-# --------------------------------------------------------
+
 resource "aws_iam_role" "codebuild_role" {
   name = "${var.project_name}-codebuild-role"
 
@@ -49,9 +48,8 @@ resource "aws_iam_role_policy" "codebuild_policy" {
   })
 }
 
-# --------------------------------------------------------
 # 2. CodePipeline Service Role (THIS IS THE ONE CAUSING YOUR ERROR)
-# --------------------------------------------------------
+
 resource "aws_iam_role" "codepipeline_role" {
   name = "${var.project_name}-codepipeline-role"
 
