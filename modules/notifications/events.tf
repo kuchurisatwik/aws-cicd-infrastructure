@@ -1,6 +1,5 @@
-# -------------------------------------------------------------------
 # 1. CodePipeline Alerts (Pipeline level)
-# -------------------------------------------------------------------
+
 resource "aws_cloudwatch_event_rule" "pipeline_events" {
   name        = "${var.project_name}-pipeline-rule"
   description = "Capture CodePipeline State Changes"
@@ -29,9 +28,8 @@ resource "aws_cloudwatch_event_target" "pipeline_sns" {
   }
 }
 
-# -------------------------------------------------------------------
 # 2. CodeBuild Alerts (Build level)
-# -------------------------------------------------------------------
+
 resource "aws_cloudwatch_event_rule" "build_events" {
   name        = "${var.project_name}-build-rule"
   description = "Capture CodeBuild State Changes"
@@ -51,9 +49,8 @@ resource "aws_cloudwatch_event_target" "build_sns" {
   arn       = aws_sns_topic.alerts.arn
 }
 
-# -------------------------------------------------------------------
 # 3. CodeDeploy Alerts (Deployment level)
-# -------------------------------------------------------------------
+
 resource "aws_cloudwatch_event_rule" "deploy_events" {
   name        = "${var.project_name}-deploy-rule"
   description = "Capture CodeDeploy State Changes"
